@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html class="no-js" lang="">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Scroll Video</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+  <title>Scroll Video</title>
+  <meta name="description" content=""/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <!-- Place favicon.ico in the root directory -->
-  </head>
-  <body>
-    <style type="text/css" media="screen">
-      body {
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+  <!-- Place favicon.ico in the root directory -->
+</head>
+<body class="scroller">
+<style type="text/css" media="screen">
+    body {
         position: relative;
         font-size: 48px;
         font-family: sans-serif;
         text-align: center;
         line-height: 1.4;
-      }
+    }
 
-      * {
+    * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-      }
+    }
 
-      section {
+    section {
         position: relative;
         width: 100vw;
         min-height: 100vh;
@@ -35,85 +35,99 @@
         justify-content: center;
         align-items: center;
         padding: 50px;
-      }
+    }
 
-      section:nth-child(2n) {
+    section:nth-child(2n) {
         background: red;
-      }
+    }
 
-      .embedded-video {
+    .embedded-video {
         width: 100%;
         height: 100%;
         object-fit: cover;
-      }
+    }
 
-      .scrolling-videos {
+    .scrolling-videos {
         position: fixed;
         top: 50%;
         left: 50%;
         min-width: 100%;
         min-height: 100%;
         transform: translate(-50%, -50%);
-      }
+    }
 
-      .subtitles {
+    .subtitles {
         position: relative;
-      }
+    }
 
-      .subtitles p {
+    .subtitles p {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
         height: 100vh;
-      }
-    </style>
+    }
+</style>
 
-    <section>
-      Space is messy. Space, the final frontier, vast void speckled with planets
-      and it’s stars and well… JUNK. You see, space is messy, REALLY MESSY. But
-      why should we care? What is space junk? Why clear space?
-    </section>
+<section>
+  Space is messy. Space, the final frontier, vast void speckled with planets
+  and it’s stars and well… JUNK. You see, space is messy, REALLY MESSY. But
+  why should we care? What is space junk? Why clear space?
+</section>
 
-    <section>
-      <video
-        src="./video.mp4"
-        playsinline="true"
-        webkit-playsinline="true"
-        preload="auto"
-        muted="muted"
-        class="embedded-video"
-      ></video>
-    </section>
+<section>
+  <video
+      src="./video.mp4"
+      playsinline="true"
+      webkit-playsinline="true"
+      preload="auto"
+      muted="muted"
+      class="embedded-video"
+  ></video>
+</section>
 
-    <section>
-      <video
-        src="./output_960.mp4"
-        playsinline="true"
-        webkit-playsinline="true"
-        preload="auto"
-        muted="muted"
-        class="scrolling-video"
-      ></video>
+<section>
+  <video
+      src="./output_960.mp4"
+      playsinline="true"
+      webkit-playsinline="true"
+      preload="auto"
+      muted="muted"
+      class="scrolling-video"
+  ></video>
 
-      <div class="subtitles">
-        <p>
-          The first satellite was launched in 1957 by the USSR as part of their
-          great space race against the USA.
-        </p>
-        <p>Little Sputnik was the first, but certainly wasn’t the last.</p>
-        <p>Today, there are over 6000, 6542 to be precise,</p>
-        <p>and half of them don’t even work anymore.</p>
-        <p>But that is not all that is floating around out there.</p>
-        <p>
-          There are spaceships parts, default missiles, even US astronaut Ed
-          Whites’ glove.
-        </p>
-        <p>With so much floating around up there, could we be in danger?</p>
-      </div>
-    </section>
+  <div class="subtitles">
+    <p>
+      The first satellite was launched in 1957 by the USSR as part of their
+      great space race against the USA.
+    </p>
+    <p>Little Sputnik was the first, but certainly wasn’t the last.</p>
+    <p>Today, there are over 6000, 6542 to be precise,</p>
+    <p>and half of them don’t even work anymore.</p>
+    <p>But that is not all that is floating around out there.</p>
+    <p>
+      There are spaceships parts, default missiles, even US astronaut Ed
+      Whites’ glove.
+    </p>
+    <p>With so much floating around up there, could we be in danger?</p>
+  </div>
+</section>
 
-    <script src="./gsap.min.js"></script>
-    <script src="./ScrollTrigger.min.js"></script>
-    <script src="./index.js"></script>
-  </body>
+<script src="./gsap.min.js"></script>
+<script src="./ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/three@0.137.0/build/three.min.js"></script>
+<script src="https://unpkg.com/gsap@3.6.1/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/three-story-controls@1.0.6/dist/three-story-controls.min.js"></script>
+<script src="https://unpkg.com/es-module-shims@0.11.1/dist/es-module-shims.js"></script>
+<script type="importmap-shim">
+  {
+    "imports": {
+      "three": "https://cdn.skypack.dev/three@0.137.0",
+      "gsap": "https://cdn.skypack.dev/gsap@3.6.1",
+      "three-story-controls" : "https://unpkg.com/three-story-controls@1.0.6/dist/three-story-controls.min.js"
+    }
+  }
+
+</script>
+<script type="module/shim" src="./index.js"></script>
+</body>
 </html>

@@ -15,7 +15,7 @@ once(video, "loadedmetadata", () => {
 });
 
 let tl = gsap.timeline({
-  defaults: { duration: 1 },
+  defaults: {duration: 1},
   scrollTrigger: {
     trigger: ".video",
     start: "top top",
@@ -34,4 +34,23 @@ function once(el, event, fn, opts) {
   };
   el.addEventListener(event, onceFn, opts);
   return onceFn;
+}
+
+
+const controls = new ScrollControls( {
+  scrollElement: document.querySelector('.scroller'),
+  scrollActions: [
+    {start: '0%', end: '10%', callback: e => fadeInElement(e)},
+    {start: '85%', end: '100%', callback: e => fadeOutElement(e)}
+  ]
+})
+
+console.log(controls);
+
+function fadeInElement(progress) {
+  console.log(progress)
+}
+
+function fadeOutElement(progress) {
+  console.log(progress)
 }

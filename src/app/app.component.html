@@ -1,0 +1,102 @@
+<style type="text/css" media="screen">
+  body {
+    position: relative;
+    font-size: 48px;
+    font-family: sans-serif;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  section {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+  }
+
+  section:nth-child(2n) {
+    background: red;
+  }
+
+  .embedded-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .scrolling-videos {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+  }
+
+  .subtitles {
+    position: relative;
+  }
+
+  .subtitles p {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100vh;
+  }
+</style>
+<div class="scroller">
+
+  <section>
+    Space is messy. Space, the final frontier, vast void speckled with planets
+    and it’s stars and well… JUNK. You see, space is messy, REALLY MESSY. But
+    why should we care? What is space junk? Why clear space?
+  </section>
+
+  <section>
+    <video
+      src="./video.mp4"
+      playsinline="true"
+      webkit-playsinline="true"
+      preload="auto"
+      muted="muted"
+      class="embedded-video"
+    ></video>
+  </section>
+
+  <section>
+    <video
+      src="./output_960.mp4"
+      playsinline="true"
+      webkit-playsinline="true"
+      preload="auto"
+      muted="muted"
+      class="scrolling-video"
+    ></video>
+
+    <div class="subtitles">
+      <p>
+        The first satellite was launched in 1957 by the USSR as part of their
+        great space race against the USA.
+      </p>
+      <p>Little Sputnik was the first, but certainly wasn’t the last.</p>
+      <p>Today, there are over 6000, 6542 to be precise,</p>
+      <p>and half of them don’t even work anymore.</p>
+      <p>But that is not all that is floating around out there.</p>
+      <p>
+        There are spaceships parts, default missiles, even US astronaut Ed
+        Whites’ glove.
+      </p>
+      <p>With so much floating around up there, could we be in danger?</p>
+    </div>
+  </section>
+</div>
