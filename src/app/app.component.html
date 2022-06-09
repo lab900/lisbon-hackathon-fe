@@ -1,4 +1,4 @@
-<div class="scroller" *ngIf="config$ | async as config">
+<div class="scroller" *ngIf="config$ | async as config" id="reveal1">
   <section *ngFor="let layer of config.layers" [attr.id]="layer.id">
     <ng-container *ngIf="layer?.content">
       <ng-container [ngSwitch]="layer?.content?.type">
