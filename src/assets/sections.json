@@ -1,0 +1,53 @@
+{
+  "id": "0",
+  "name": "cartoonBaseShowCase",
+  "layers": [
+    {
+      "id": "2",
+      "name": "title",
+      "content": {
+        "value": "Space is messy",
+        "type": "TEXT"
+      },
+      "transitions": [
+        {
+          "startPosition": {
+            "x": 2,
+            "y": 2
+          },
+          "endPosition": {
+            "x": 2,
+            "y": 2
+          },
+          "animation-in": "NONE",
+          "animation-out": "NONE"
+        }
+      ],
+      "subLayers": [
+        {}
+      ]
+    },
+    {
+      "id": "3",
+      "name": "explanation",
+      "content": {
+        "value": "https://storage.googleapis.com/lab900-public-assets/background.mp4",
+        "type": "VIDEO"
+      },
+      "transitions": [
+        {
+          "startPosition": {
+            "x": 2,
+            "y": 10
+          },
+          "endPosition": {
+            "x": 2,
+            "y": 10
+          },
+          "animation-in": "NONE",
+          "animation-out": "NONE"
+        }
+      ]
+    }
+  ]
+}
