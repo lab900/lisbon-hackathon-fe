@@ -1,28 +1,24 @@
 gsap.registerPlugin(ScrollTrigger);
 
-const video = document.querySelector("video");
+const video = document.querySelector(".scrolling-video");
 
-once(video, "loadedmetadata", () => {
-  tl.fromTo(
-    video,
-    {
-      currentTime: 0,
-    },
-    {
-      currentTime: video.duration || 1,
-    }
-  );
-});
-
-let tl = gsap.timeline({
+const tl = gsap.timeline({
   defaults: { duration: 1 },
   scrollTrigger: {
-    trigger: ".video",
+    trigger: ".scrolling-video-background",
     start: "top top",
-    // end: "bottom bottom",
-    end: "bottom+=400% bottom",
+    end: "bottom bottom",
     scrub: true,
-    markers: true,
+  },
+});
+
+const tlFade = gsap.timeline({
+  defaults: { duration: 1 },
+  scrollTrigger: {
+    trigger: ".scrolling-video-background",
+    start: "top top",
+    end: "+=50",
+    scrub: true,
   },
 });
 
@@ -35,3 +31,35 @@ function once(el, event, fn, opts) {
   el.addEventListener(event, onceFn, opts);
   return onceFn;
 }
+
+document.querySelectorAll(".scrolling-video-background").forEach((el) => {
+  const video = document.createElement("video");
+
+  once(video, "loadedmetadata", () => {
+    tl.fromTo(
+      video,
+      {
+        currentTime: 0,
+      },
+      {
+        currentTime: video.duration || 1,
+      }
+    );
+    tlFade.fromTo(
+      video,
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+      }
+    );
+  });
+  video.src = "./output_960.mp4";
+  video.playsInline = true;
+  video.preload = "auto";
+  video.muted = "muted";
+  video.className = "scrolling-video";
+  // video.style = "opacity: 0";
+  el.appendChild(video);
+});

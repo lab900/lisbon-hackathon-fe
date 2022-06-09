@@ -38,7 +38,7 @@
       }
 
       section:nth-child(2n) {
-        background: red;
+        background: rgba(255, 0, 0, 0.2);
       }
 
       .embedded-video {
@@ -47,17 +47,20 @@
         object-fit: cover;
       }
 
-      .scrolling-videos {
+      .scrolling-video {
         position: fixed;
-        top: 50%;
-        left: 50%;
-        min-width: 100%;
-        min-height: 100%;
-        transform: translate(-50%, -50%);
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        z-index: 5;
       }
 
       .subtitles {
         position: relative;
+        z-index: 100;
+        color: white;
       }
 
       .subtitles p {
@@ -80,21 +83,13 @@
         playsinline="true"
         webkit-playsinline="true"
         preload="auto"
+        autoplay
         muted="muted"
         class="embedded-video"
       ></video>
     </section>
 
-    <section>
-      <video
-        src="./output_960.mp4"
-        playsinline="true"
-        webkit-playsinline="true"
-        preload="auto"
-        muted="muted"
-        class="scrolling-video"
-      ></video>
-
+    <section class="scrolling-video-background">
       <div class="subtitles">
         <p>
           The first satellite was launched in 1957 by the USSR as part of their
