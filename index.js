@@ -3,7 +3,7 @@ gsap.registerPlugin(ScrollTrigger);
 const config = {
   id: "0",
   name: "cartoonBaseShowCase",
-  layers: [
+  sections: [
     {
       id: "1",
       name: "part1",
@@ -11,16 +11,18 @@ const config = {
         value:
           "https://storage.googleapis.com/lab900-public-assets/background.mp4",
         type: "VIDEO",
+        playbackMethod: "loop", // FIXME added by FE
       },
       transitions: [
-        {
-          startPosition: { x: 0, y: 0 },
-          endPosition: { x: 0, y: 0 },
-          "animation-in": "FADE-IN",
-          "animation-out": "FADE-OUT",
-        },
+        // FIXME loop doesn't need transition
+        // {
+        //   startPosition: { x: 0, y: 0 },
+        //   endPosition: { x: 0, y: 0 },
+        //   "animation-in": "FADE-IN",
+        //   "animation-out": "FADE-OUT",
+        // },
       ],
-      subLayers: [
+      subSections: [
         {
           id: "2",
           name: "title",
@@ -31,15 +33,12 @@ const config = {
           transitions: [
             {
               startPosition: { x: 2, y: 2 },
-              endPosition: {
-                x: 2,
-                y: 2,
-              },
+              endPosition: { x: 2, y: 2 },
               "animation-in": "NONE",
               "animation-out": "NONE",
             },
           ],
-          subLayers: [{}],
+          subSections: [{}],
         },
         {
           id: "3",
@@ -51,19 +50,13 @@ const config = {
           },
           transitions: [
             {
-              startPosition: {
-                x: 2,
-                y: 10,
-              },
-              endPosition: {
-                x: 2,
-                y: 10,
-              },
+              startPosition: { x: 2, y: 10 },
+              endPosition: { x: 2, y: 10 },
               "animation-in": "NONE",
               "animation-out": "NONE",
             },
           ],
-          subLayers: [{}],
+          subSections: [{}],
         },
       ],
     },
@@ -74,22 +67,17 @@ const config = {
         value:
           "https://storage.googleapis.com/lab900-public-assets/could-we-be-in-danger.mp4",
         type: "VIDEO",
+        playbackMethod: "scroll", // FIXME added by FE
       },
       transitions: [
         {
-          startPosition: {
-            x: 0,
-            y: 100,
-          },
-          endPosition: {
-            x: 0,
-            y: 500,
-          },
+          startPosition: { x: 0, y: 100 },
+          endPosition: { x: 0, y: 500 },
           "animation-in": "FADE-IN",
           "animation-out": "FADE-OUT",
         },
       ],
-      subLayers: [
+      subSections: [
         {
           id: "5",
           name: "extraText1",
@@ -100,19 +88,13 @@ const config = {
           },
           transitions: [
             {
-              startPosition: {
-                x: 75,
-                y: 0,
-              },
-              endPosition: {
-                x: 75,
-                y: 94.11,
-              },
+              startPosition: { x: 75, y: 0 },
+              endPosition: { x: 75, y: 94.11 },
               "animation-in": "FADE_IN",
               "animation-out": "FADE_OUT",
             },
           ],
-          subLayers: [{}],
+          subSections: [{}],
         },
         {
           id: "6",
@@ -124,19 +106,13 @@ const config = {
           },
           transitions: [
             {
-              startPosition: {
-                x: 75,
-                y: 94.11,
-              },
-              endPosition: {
-                x: 75,
-                y: 141.17,
-              },
+              startPosition: { x: 75, y: 94.11 },
+              endPosition: { x: 75, y: 141.17 },
               "animation-in": "FADE_IN",
               "animation-out": "FADE_OUT",
             },
           ],
-          subLayers: [{}],
+          subSections: [{}],
         },
         {
           id: "7",
@@ -159,7 +135,7 @@ const config = {
               "animation-out": "FADE_OUT",
             },
           ],
-          subLayers: [{}],
+          subSections: [{}],
         },
         {
           id: "8",
@@ -182,7 +158,7 @@ const config = {
               "animation-out": "FADE_OUT",
             },
           ],
-          subLayers: [{}],
+          subSections: [{}],
         },
         {
           id: "9",
@@ -205,7 +181,7 @@ const config = {
               "animation-out": "FADE_OUT",
             },
           ],
-          subLayers: [{}],
+          subSections: [{}],
         },
         {
           id: "10",
@@ -229,7 +205,7 @@ const config = {
               "animation-out": "FADE_OUT",
             },
           ],
-          subLayers: [{}],
+          subSections: [{}],
         },
         {
           id: "11",
@@ -253,7 +229,7 @@ const config = {
               "animation-out": "FADE_OUT",
             },
           ],
-          subLayers: [{}],
+          subSections: [{}],
         },
       ],
     },
@@ -264,6 +240,7 @@ const config = {
         value:
           "https://storage.googleapis.com/lab900-public-assets/interview-why-is-it-dangerous.mp4",
         type: "VIDEO",
+        playbackMethod: "once", // FIXME added by FE
       },
       transitions: [
         {
@@ -279,7 +256,7 @@ const config = {
           "animation-out": "NONE",
         },
       ],
-      subLayers: [{}],
+      subSections: [{}],
     },
   ],
 };
@@ -290,7 +267,7 @@ const tl = gsap.timeline({
   defaults: { duration: 1 },
   scrollTrigger: {
     trigger: ".scrolling-video-background",
-    start: "top top",
+    start: "-=400",
     end: "bottom bottom",
     scrub: true,
   },
@@ -300,8 +277,8 @@ const tlFade = gsap.timeline({
   defaults: { duration: 1 },
   scrollTrigger: {
     trigger: ".scrolling-video-background",
-    start: "top top",
-    end: "+=50",
+    start: "-=400",
+    end: "top top",
     scrub: true,
   },
 });
@@ -330,39 +307,15 @@ document.querySelectorAll(".scrolling-video-background").forEach((el) => {
   const video = document.createElement("video");
 
   once(video, "loadedmetadata", () => {
-    tl.fromTo(
-      video,
-      {
-        currentTime: 0,
-      },
-      {
-        currentTime: video.duration || 1,
-      }
-    );
-    tlFade.fromTo(
-      video,
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-      }
-    );
-    tlFadeOut.fromTo(
-      video,
-      {
-        opacity: 1,
-      },
-      {
-        opacity: 0,
-      }
-    );
+    tl.fromTo(video, { currentTime: 0 }, { currentTime: video.duration || 1 });
+    tlFade.fromTo(video, { opacity: 0 }, { opacity: 1 });
+    tlFadeOut.fromTo(video, { opacity: 1 }, { opacity: 0 });
   });
   video.src = "./danger.mp4";
   video.playsInline = true;
   video.preload = "auto";
   video.muted = "muted";
   video.className = "scrolling-video";
-  // video.style = "opacity: 0";
+  video.style = "opacity: 0";
   el.appendChild(video);
 });
