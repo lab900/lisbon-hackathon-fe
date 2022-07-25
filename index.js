@@ -308,8 +308,8 @@ document.querySelectorAll(".scrolling-video-background").forEach((el) => {
 
   once(video, "loadedmetadata", () => {
     tl.fromTo(video, { currentTime: 0 }, { currentTime: video.duration || 1 });
-    tlFade.fromTo(video, { opacity: 0 }, { opacity: 1 });
     tlFadeOut.fromTo(video, { opacity: 1 }, { opacity: 0 });
+    tlFade.fromTo(video, { opacity: 0 }, { opacity: 1 });
   });
   video.src = "./danger.mp4";
   video.playsInline = true;
