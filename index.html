@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -20,11 +20,16 @@
       body {
         position: relative;
         font-size: 48px;
-        font-family: "Kdam Thmor Pro", sans-serif;
+        font-family: "Roboto", sans-serif;
         text-align: center;
         line-height: 1.4;
         color: white;
         text-shadow: 0 2px 3px rgba(0, 0, 0, 0.4), 0 2px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .inverted {
+        color: black;
+        text-shadow: 0 1px 5px rgba(255, 255, 255, 0.3), 0 2px 30px rgba(255, 255, 255, 0.5);
       }
 
       * {
@@ -57,6 +62,14 @@
       section.long {
         font-size: 34px;
         text-align: left;
+      }
+
+      section.h-50 {
+       min-height: 50vh;
+      }
+
+      section.stick-to-bottom {
+       justify-content: flex-end;
       }
 
       .embedded-video {
@@ -96,16 +109,34 @@
         font-size: 36px;
       }
 
-      .subtitles p {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-        text-align: left;
+      .subtitles > * {
+       display: flex;
+       flex-direction: row;
+       height: 100vh;
+       text-align: left;
+       align-items: center;
+       justify-content: center;
+      }
+
+      .subtitles > * > * {
+        display: block;
+        margin: 20px;
+        max-height: 40vh;
+        flex: 0 1 50%;
+      }
+
+      .subtitles > p {
         max-width: 50vh;
       }
 
-      .subtitles p:nth-child(2n + 1) {
+      .subtitles > p:nth-child(2n + 1) {
         align-self: flex-end;
+      }
+
+      .side-image {
+        background-size: cover;
+        background-position: center center;
+        height: 100%;
       }
     </style>
 
@@ -138,15 +169,18 @@
 
     <section class="scrolling-video-background wide">
       <div class="subtitles">
-        <p>
-          The first satellite was launched in 1957 by the USSR as part of their
-          great space race against the USA.
-        </p>
+        <div>
+          <div style="background-image: url(sputnik.jpg)" class="side-image"></div>
+          <p>
+            The first satellite was launched in 1957 by the USSR as part of their
+            great space race against the USA.
+          </p>
+        </div>
         <p>Little Sputnik was the first, but certainly wasn’t the last.</p>
         <p>Today, there are over 6000, 6542 to be precise,</p>
         <p>and half of them don’t even work anymore.</p>
-        <p>But that is not all that is floating around out there.</p>
-        <p>
+        <p class="inverted">But that is not all that is floating around out there.</p>
+        <p class="inverted">
           There are spaceships parts, default missiles, even US astronaut Ed
           Whites’ glove.
         </p>
@@ -155,6 +189,7 @@
     </section>
 
     <section>
+      <p>Not if we do something about it. Watch the video below to discover how to clear space!</p>
       <video
         src="./interview-why-is-it-dangerous.mp4"
         playsinline="true"
